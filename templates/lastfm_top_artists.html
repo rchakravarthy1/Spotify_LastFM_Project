@@ -18,25 +18,26 @@
             text-decoration: underline;
         }
     </style>
+
 </head>
 
 <body>
     <div class="center">
 
-        <h1>Similar Artist Results</h1>
         <div id="query">
-            Artists Similar to {{QUERY}}:
+            <h1>{{USERNAME}}'s Top {{LIMIT}} Artists on Last.fm</h1>
         </div>
         
         <div id="results">
             <ol id="resultList">
                 {% for artist in RESULT %}
-                <li>{{ artist }}</li>
+                <li>{{artist}}</li>
                 {% endfor %}
             </ol>
         </div>
         
     </div>
+
 </body>
 
 </html>

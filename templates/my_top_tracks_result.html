@@ -16,27 +16,28 @@
 
         div#query {
             text-decoration: underline;
-        }
+        }  
     </style>
 </head>
 
 <body>
     <div class="center">
-
-        <h1>Similar Artist Results</h1>
+        <h1>Your Top Tracks</h1>
         <div id="query">
-            Artists Similar to {{QUERY}}:
+            Your top {{LIMIT}} tracks in the {{TIMEFRAME}}: <br>
         </div>
-        
-        <div id="results">
-            <ol id="resultList">
-                {% for artist in RESULT %}
-                <li>{{ artist }}</li>
-                {% endfor %}
-            </ol>
+        <div class="center">
+
+            <div id="results">
+                <ol id="resultList">
+                    {% for track in RESULT %}
+                    <li>{{track}}</li>
+                    {% endfor %}
+                </ol>
+            </div>
         </div>
-        
     </div>
+
 </body>
 
 </html>

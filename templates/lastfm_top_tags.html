@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{USERNAME}}'s top {{LIMIT}} Tags on Last.fm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_css.css') }}">
+    <style>
+        img#wordcloud {
+            float: right;
+            margin-right: 50px;
+        }
+
+        h1 {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+
+        <h1>
+            {{USERNAME}}'s top {{LIMIT}} Tags on Last.fm
+        </h1>
+    </div>
+    <div id="results">
+        <img id="wordcloud" src = "{{ url_for('static', filename='tag_cloud.png') }}" alt="top tags wordcloud">
+        <ol id="resultList">
+            {% for tag in RESULT %}
+            <li>{{tag}}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+</body>
+</html>

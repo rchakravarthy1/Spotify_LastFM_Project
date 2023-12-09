@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_css.css') }}">
+    <style>
+        h1 {margin-top: 10%;
+        margin-bottom: 7.5%;}
+    </style>
 </head>
+
 <body>
-    <h1>Enter a musical artist to find similar artists</h1>
+    <div class="center">
 
-<form id="form" action="/result" method="post">
-    <label for="query">Enter Query:</label>
-    <input type="text" id="query" name="query" required>
-    <input type="submit" value="Submit">
-</form>
+        <h1>Enter a musical artist to find similar artists</h1>
+
+        <form id="form" action="/similar_artists_result" method="post">
+            <label for="query">Enter Query:</label>
+            <input type="text" id="query" name="query" required>
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
 
 
-    
 </body>
+
 </html>

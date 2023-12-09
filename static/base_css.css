@@ -1,0 +1,11 @@
+body {
+    background-color: rgb(253, 238, 216)
+}
+
+div.center {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}

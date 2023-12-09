@@ -1,18 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_css.css') }}">
+    <style>
+        .center
+        .feature {
+            width: 15%;
+            background-color: lightgreen;
+            padding: 2%;
+            margin: 20px;
+            text-align: center;
+            font-family: arial;
+            font-weight: bolder;
+            position: relative;
+            left: 50%;
+            margin-left: -8%;
+            border-radius: 25px;
+        }
+
+        #lastfm_feature {
+            background-color: lightcoral;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to Rohan's Spotify/Last.fm Project Website</h1>
-    <h2>Select a Functionality Below</h2>
-    <p>
-        <a href="/similar_artists">Find Similar Artists</a>
-        <a href="/my_top_artists">Find Your Top Artists</a>
-        <a href="/my_top_tracks">Find Your Top Tracks</a>
-    </p>
-    
+    <div class="center">
+        <h1>Welcome to Rohan's Spotify/Last.fm Project Website</h1>
+        <h2>Select a Functionality Below</h2>
+        <p>
+            <div class="feature">
+                <a href="/similar_artists_prompt">Find Similar Artists</a>
+            </div>
+            <div class="feature">
+                <a href="/my_top_artists_prompt">Find Your Top Artists (Spotify)</a>
+            </div>
+            <div class="feature">
+                <a href="/my_top_tracks_prompt">Find Your Top Tracks (Spotify)</a>
+            </div>
+            <div class="feature" id="lastfm_feature">
+                <a href="/lastfm_splash">Last.fm features</a>
+            </div>
+        </p>
+    </div>
+
 </body>
+
 </html>

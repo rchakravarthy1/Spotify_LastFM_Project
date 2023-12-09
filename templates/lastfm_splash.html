@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last.fm Functions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_css.css') }}">
+    <style>
+        div#desc {
+            margin-top: 6%;
+            text-align: left;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+
+    <script>
+        function update_dest(){
+            dest = document.getElementById('type').value
+            document.getElementById('f').action = '/' + dest
+        }
+
+    </script>
+</head>
+<body>
+    <div class="center">
+
+        <h1>Select a User and Functionality Below</h1>
+        <p>
+            Enter a last.fm user to check out their all-time stats:
+            <form id="f" action="/lastfm_top_artists" method="post">
+                <input id="username" type="text" name="username" placeholder="username" required>
+                <select name="destination" id="type" onchange="update_dest()">
+                    <option value="lastfm_top_artists">Top Artists</option>
+                    <option value="lastfm_top_tracks">Top Tracks</option>
+                    <option value="lastfm_top_tags">Top Tags</option>
+                </select>
+                <input type="number" name="limit" id="limit" min="1" max="50" value="10">
+                <input type="submit" name="submit" id="submit">
+            </form>
+
+            <div id="desc">
+
+                <h3>
+                    <ul>
+                        <li>Top Artists: User's all time top artists</li>
+                        <li>Top Tracks: User's all time top tracks</li>
+                        <li>Top Tags: User's all time top tags with a wordcloud</li>
+                    </ul>
+                </h3>
+            </div>
+        </p>
+    </div>
+</body>
+</html>

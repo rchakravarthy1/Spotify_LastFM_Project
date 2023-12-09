@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Top Tracks!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_css.css') }}">
+
+
+    <style>
+        div#timeframes {
+            margin: 10px
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="center">
+
+        <h1>To find out your top tracks, select our timeframe and click the submit button below</h1>
+        <form id="form" action="/my_top_tracks_result" method="post">
+            <div id="timeframes">
+                <input type="radio" name="timeframe" value="short_term"> Short Term <br>
+                <input type="radio" name="timeframe" value="medium_term"> Medium Term <br>
+                <input type="radio" name="timeframe" value="long_term" checked> Long Term <br> 
+            </div>
+            <br>
+            How many tracks would you like to show? <br> <br>
+            <input type="number" name="limit" id="limit" value="10" min="1" max="50" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
