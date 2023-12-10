@@ -1,10 +1,25 @@
-# Welcome to my Term Project!
+# Spotify/Last.fm Queries
+[This Web App](https://rchakravarthy1.pythonanywhere.com/) provides point and click queries on spotify and last.fm data. See details below for installing locally. Use responsibly.
+
+## Welcome to my Term Project!
 
 Hello! And welcome to my term project's info site. For the functional web app, head over [to my app site](https://rchakravarthy1.pythonanywhere.com/). Also, feel free to check out my web development project [here](https://rchakravarthy1.github.io/webtech2023f/TPF/), in which I talk about some of my favorite genres, their history, and the notable artists behind them.
 
 ## The Big Idea
 
 I started this project because I'm a music lover and this was a great way to integrate data, code, and music. I wanted to have a simple web app that would return some metrics based on some inputs. Sure, you can wait each year for Spotify wrapped to come out, but what about us impatient folks! For the past few years I've been using last.fm to scrobble my music data, so I utilized the last.fm and spotify APIs to create a set of functions that I find useful.
+
+## Installing Locally
+
+1. Download the latest version of the app.
+2. Read [requirements.txt](/requirements.txt)
+3. Install dependencies from requirements.txt
+4. Obtain an API key and other tokens from [spotify](https://developer.spotify.com/documentation/web-api) and [last.fm](https://www.last.fm/api/rest)
+5. Edit [config_template.py](/config_template.py) to include the necessary tokens
+   1. Ensure your redirect URI matches the one in config.py. Stick with defaults like "http://localhost:5000"
+6. Rename config_template.py to config.py
+7. Run app.py and open locally in browser
+8. Have fun!
 
 ## How to use the app
 
@@ -23,9 +38,11 @@ Unfortunately in its current state, there are 3 functions that are not working p
 ### Spotify Top Artists
 
 Due to issues with how the spotify authentication requires the user to interact with the site, I wasn't able to get these features working in deployment. Locally, after I authenticated my spotify account, I was able to access the data to show to you guys. Below is my top 10 artists in the short term:
+
 ![short term artists](info_images/short_term_artists.png)
 
 And here's my top 10 artists in the long term:
+
 ![long term artists](info_images/long_term_artists.png)
 
 I was certainly surprised to see the Chili Peppers sneak in there but those little surprises are what this project is all about!
@@ -34,14 +51,16 @@ I was certainly surprised to see the Chili Peppers sneak in there but those litt
 A similar issue happens with the top tracks feature. Here's the data for my account when run locally. 
 
 Top 10 tracks in the short term:
+
 ![short term tracks](info_images/short_term_tracks.png)
 
 And here's my top 10 in the long term:
+
 ![long term tracks](info_images/long_term_tracks.png)
 
 Of course Black Cow by Steely Dan makes both lists... it's timeless!
 
-### Last.fm top tags
+### Last.fm Top Tags
 
 I actually couldn't isolate the issue for why this feature doesn't work in deployment, which is dissappointing considering I find it the most interesting. Here's a list of user RJ's top tags and the wordcloud that got generated from it. Note that the size of the words are based on count.
 
