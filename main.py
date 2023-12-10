@@ -1,17 +1,17 @@
-# from config import (
-#     SPOTIFY_CLIENT_ID,
-#     SPOTIFY_SECRET,
-#     LASFM_SHARED_SECRET,
-#     LASTFM_API_KEY,
-#     REDIRECT_URL,
-# )
+from config import (
+    SPOTIFY_CLIENT_ID,
+    SPOTIFY_SECRET,
+    LASTFM_SHARED_SECRET,
+    LASTFM_API_KEY,
+    REDIRECT_URL,
+)
 import os
 
-SPOTIFY_CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID', "spotify_client_id")
-SPOTIFY_SECRET = os.environ.get('SPOTIFY_SECRET', "spotify_secret")
-LASTFM_API_KEY = os.environ.get('LASTFM_API_KEY', "lastfm_api")
-LASTFM_SHARED_SECRET = os.environ.get('LASFM_SHARED_SECRET', "lastfm_secret")
-REDIRECT_URL = os.environ.get('REDIRECT_URL', "redirect_url")
+# SPOTIFY_CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID', "spotify_client_id")
+# SPOTIFY_SECRET = os.environ.get('SPOTIFY_SECRET', "spotify_secret")
+# LASTFM_API_KEY = os.environ.get('LASTFM_API_KEY', "lastfm_api")
+# LASTFM_SHARED_SECRET = os.environ.get('LASFM_SHARED_SECRET', "lastfm_secret")
+# REDIRECT_URL = os.environ.get('REDIRECT_URL', "redirect_url")
 
 
 import spotipy
