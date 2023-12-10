@@ -102,38 +102,42 @@ def prompt_top_tracks():
 
 @app.route("/my_top_artists_result", methods=["GET", "POST"])
 def result_top_artist():
-    timeframe = request.form["timeframe"]
-    if request.form["limit"]:
-        limit = request.form["limit"]
-        if int(limit) > 50:
-            limit = 50
-    else:
-        limit = 10  # if the user deletes the default value, default back to 10
-    result = get_top_artists(timeframe, limit)
-    time_formatted = timeframe.replace("_", " ")
-    return render_template(
-        "my_top_artists_result.html",
-        TIMEFRAME=time_formatted,
-        LIMIT=limit,
-        RESULT=result,
-    )
+    try:
+        timeframe = request.form["timeframe"]
+        if request.form["limit"]:
+            limit = request.form["limit"]
+            if int(limit) > 50:
+                limit = 50
+        else:
+            limit = 10  # if the user deletes the default value, default back to 10
+        result = get_top_artists(timeframe, limit)
+        time_formatted = timeframe.replace("_", " ")
+        return render_template(
+            "my_top_artists_result.html",
+            TIMEFRAME=time_formatted,
+            LIMIT=limit,
+            RESULT=result,
+        )
+    except: return redirect("/wip")
 
 
 @app.route("/my_top_tracks_result", methods=["GET", "POST"])
 def result_top_tracks():
-    timeframe = request.form["timeframe"]
-    if request.form["limit"]:
-        limit = request.form["limit"]
-    else:
-        limit = 10  # if the user deletes the default value, default back to 10
-    time_formatted = timeframe.replace("_", " ")
-    result = get_top_tracks(timeframe, limit)
-    return render_template(
-        "my_top_tracks_result.html",
-        TIMEFRAME=time_formatted,
-        LIMIT=limit,
-        RESULT=result,
-    )
+    try:
+        timeframe = request.form["timeframe"]
+        if request.form["limit"]:
+            limit = request.form["limit"]
+        else:
+            limit = 10  # if the user deletes the default value, default back to 10
+        time_formatted = timeframe.replace("_", " ")
+        result = get_top_tracks(timeframe, limit)
+        return render_template(
+            "my_top_tracks_result.html",
+            TIMEFRAME=time_formatted,
+            LIMIT=limit,
+            RESULT=result,
+        )
+    except: return redirect("/wip")
 
 
 @app.route("/error", methods=["GET", "POST"])
@@ -141,6 +145,9 @@ def error():
     query = request.args["query"]
     return render_template("/error.html", QUERY=query)
 
+@app.route("/wip")
+def wip():
+    return render_template('/wip.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
