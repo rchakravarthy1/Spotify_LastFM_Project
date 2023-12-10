@@ -6,6 +6,6 @@ SPOTIFY_SECRET = "spotify_secret"
 
 LASTFM_API_KEY = "lastfm_api"
 
-LASFM_SHARED_SECRET = "lastfm_secret"
+LASTFM_SHARED_SECRET = "lastfm_secret"
 
 REDIRECT_URL = "redirect_url"
