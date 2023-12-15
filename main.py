@@ -7,13 +7,6 @@ from config import (
 )
 import os
 
-# SPOTIFY_CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID', "spotify_client_id")
-# SPOTIFY_SECRET = os.environ.get('SPOTIFY_SECRET', "spotify_secret")
-# LASTFM_API_KEY = os.environ.get('LASTFM_API_KEY', "lastfm_api")
-# LASTFM_SHARED_SECRET = os.environ.get('LASFM_SHARED_SECRET', "lastfm_secret")
-# REDIRECT_URL = os.environ.get('REDIRECT_URL', "redirect_url")
-
-
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import urllib.request
@@ -32,6 +25,9 @@ sp = spotipy.Spotify(
 
 
 def get_top_artists(time_frame="medium_term", limit=10):
+    '''
+    Returns top spotify artists for a user with specified term and response limit
+    '''
     result = []
     top_artists = sp.current_user_top_artists(limit=limit, time_range=time_frame)
     for i in range(len(top_artists["items"])):
@@ -40,6 +36,9 @@ def get_top_artists(time_frame="medium_term", limit=10):
 
 
 def get_top_tracks(time_frame="medium_term", limit=10):
+    '''
+    Returns top spotify tracks for a user with specified term and response limit
+    '''
     result = []
     top_tracks = sp.current_user_top_tracks(limit=limit, time_range=time_frame)
     items = top_tracks["items"]
@@ -52,6 +51,9 @@ def get_top_tracks(time_frame="medium_term", limit=10):
 
 
 def parse_json(url):
+    '''
+    Parses JSON API response into python readable format
+    '''
     with urllib.request.urlopen(url) as f:
         response_text = f.read().decode("utf-8")
         parsed = json.loads(response_text)
@@ -59,6 +61,9 @@ def parse_json(url):
 
 
 def get_similar_artists(artist, limit=10):
+    '''
+    Finds similar artists to specified artist. If artist isn't found, returns 999
+    '''
     try:
         artist = artist.replace(" ", "+")
         data = parse_json(
@@ -75,6 +80,10 @@ def get_similar_artists(artist, limit=10):
 
 
 def find_user_top_artists(user, limit=10):
+    '''
+    Returns top last.fm artists for a specified user with specified term and response limit using last.fm API
+    '''
+
     data = parse_json(
         f"https://ws.audioscrobbler.com/2.0/?method=user.gettopartists&api_key={LASTFM_API_KEY}&user={user}&limit={limit}&format=json"
     )
@@ -88,6 +97,9 @@ def find_user_top_artists(user, limit=10):
 
 
 def find_user_top_tracks(user, limit=10):
+    '''
+    Returns top last.fm tracks for a specified user with specified term and response limit using last.fm API
+    '''
     data = parse_json(
         f"https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&api_key={LASTFM_API_KEY}&user={user}&limit={limit}&format=json"
     )
@@ -100,6 +112,9 @@ def find_user_top_tracks(user, limit=10):
     return result
 
 def find_user_top_tags(user, limit = 25):
+    '''
+    Returns top last.fm tags for a specified user with specified term and response limit using last.fm API
+    '''
     data = parse_json(
         f'https://ws.audioscrobbler.com/2.0/?method=user.gettoptags&api_key={LASTFM_API_KEY}&user={user}&limit={limit}&format=json'
     )
@@ -114,6 +129,9 @@ def find_user_top_tags(user, limit = 25):
     return result, result_dict
 
 def top_tags_word_cloud(user, limit = 25):
+    '''
+    Creates a word cloud based on a specified last.fm user's top tags
+    '''
     _, tag_dict = find_user_top_tags(user, limit)
     tag_cloud = WordCloud(width=800, height=400, background_color="white").generate_from_frequencies(tag_dict)
     return tag_cloud
